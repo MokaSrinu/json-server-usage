@@ -1,0 +1,2 @@
+json server -->// there are some api's that we cannot customize 
+              // while working in construct week project we need to use api but the api may not exists then we need to create fake data base with json server that we can access with api call.

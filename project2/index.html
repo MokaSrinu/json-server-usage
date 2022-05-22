@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,td,th{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="filldata">
+       <input type="text" id="name" placeholder="NAME...">
+       <input type="number" id="age" placeholder="AGE...">
+       <input type="text" id="GENDER" placeholder="GENDER...">
+       <input type="number" id="MARKS" placeholder="MARKS...">
+       <input type="text" id="cohort" placeholder="COHORT...">
+       <button onclick="create()">CREATE NEW STUDENT</button>
+    </div>
+    <div id="container"></div>
+</body>
+<script>
+    let container=document.querySelector("#container");
+    async function create(){
+        console.log("hi");
+       try {
+           let body1={
+               name:document.querySelector("#name").value,
+               age:document.querySelector("#age").value,
+               gender:document.querySelector("#GENDER").value,
+               marks:document.querySelector("#MARKS").value,
+               cohort:document.querySelector("#cohort").value,
+           }
+           console.log(body1);
+           let res=await fetch("http://localhost:3000/students",{
+               method:"POST",
+               body:JSON.stringify(body1),
+               headers:{
+                   "Content-Type":"application/json"
+               }
+           });
+           let data= await res.json();
+           console.log(data,"hi");
+           updatedom();
+           
+       } catch (error) {
+           console.log(error)
+       }
+    }
+    
+    async function updatedom(){
+        container.innerHTML="";
+      let table=document.createElement("table");
+      let thead=document.createElement("thead");
+      let theadrow=document.createElement("tr");
+      let th1=document.createElement("th");
+      th1.innerText="ID";
+      let th2=document.createElement("th");
+      th2.innerText="NAME";
+      let th3=document.createElement("th");
+      th3.innerText="AGE";
+      let th4=document.createElement("th");
+      th4.innerText="GENDER";
+      let th5=document.createElement("th");
+      th5.innerText="MARKS";
+      let th6=document.createElement("th");
+      th6.innerText="COHORT";
+      let th7=document.createElement("th");
+      th7.innerText="DELETE";
+      let th8=document.createElement("th");
+      th8.innerText="EDIT";
+      theadrow.append(th1,th2,th3,th4,th5,th6,th7,th8);
+      thead.append(theadrow);
+      let tbody=document.createElement("tbody");
+      let response= await fetch("http://localhost:3000/students");
+      let data=await response.json();
+      data.forEach((student)=>{
+        let tbodyrow=document.createElement("tr");
+        let td1=document.createElement("td");
+        td1.innerText=student.id;
+        let td2=document.createElement("td");
+        td2.innerText=student.name;
+        let td3=document.createElement("td");
+        td3.innerText=student.age;
+        let td4=document.createElement("td");
+        td4.innerText=student.gender;
+        let td5=document.createElement("td");
+        td5.innerText=student.marks;
+        let td6=document.createElement("td");
+        td6.innerText=student.cohort;
+        let td7=document.createElement("td");
+        let delbutton=document.createElement("button");
+        delbutton.innerText="DELETE";
+        td7.append(delbutton);
+        delbutton.onclick=async function(){
+            let res=fetch(`http://localhost:3000/students/${student.id}`,{
+                method:"DELETE"
+            });
+            updatedom();
+        }
+        let td8=document.createElement("td");
+        let editbutton=document.createElement("button");
+        editbutton.innerText="EDIT";
+        td8.append(editbutton);
+        editbutton.onclick=async function(){
+            localStorage.removeItem("studentId");
+            localStorage.setItem("studentId",JSON.stringify(student.id));
+            location.href="edit.html";
+        }
+        tbodyrow.append(td1,td2,td3,td4,td5,td6,td7,td8);
+        tbody.append(tbodyrow);
+      })
+      table.append(thead,tbody);
+      container.append(table);
+
+    }
+    updatedom()
+</script>
+</html>

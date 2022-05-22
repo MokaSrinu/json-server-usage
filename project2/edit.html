@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="editdata">
+        <input type="text" id="name" placeholder="NAME...">
+        <input type="number" id="age" placeholder="AGE...">
+        <input type="text" id="GENDER" placeholder="GENDER...">
+        <input type="number" id="MARKS" placeholder="MARKS...">
+        <input type="text" id="cohort" placeholder="COHORT...">
+        <button onclick="edit()">EDIT STUDENT</button>
+     </div>
+</body>
+<script>
+    let id=JSON.parse(localStorage.getItem("studentId"))
+    async function display(){
+        
+      try {
+          let response=await fetch(`http://localhost:3000/students/${id}`);
+          let res=await response.json();
+          console.log(res);
+          let {name,age,cohort,gender,marks}=res;
+          document.querySelector("#name").value=name;
+          document.querySelector("#age").value=age;
+          document.querySelector("#GENDER").value=gender;
+          document.querySelector("#MARKS").value=marks;
+          document.querySelector("#cohort").value=cohort;  
+      } catch (error) {
+          console.log(error);
+      }
+    }
+    display();
+    async function edit(){
+        try {
+           let body1={
+               name:document.querySelector("#name").value,
+               age:document.querySelector("#age").value,
+               gender:document.querySelector("#GENDER").value,
+               marks:document.querySelector("#MARKS").value,
+               cohort:document.querySelector("#cohort").value,
+           }
+           console.log(body1);
+           let res=await fetch(`http://localhost:3000/students/${id}`,{
+               method:"PUT",
+               body:JSON.stringify(body1),
+               headers:{
+                   "Content-Type":"application/json"
+               }
+           });
+           let data= await res.json();
+           console.log(data,"hi");
+           location.href="index.html"
+           
+       } catch (error) {
+           console.log(error)
+       }
+    }
+
+</script>
+</html>

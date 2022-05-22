@@ -1,0 +1,132 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Jackson Galgey",
+      "age": 25,
+      "gender": "Male",
+      "marks": 9,
+      "cohort": "PTWEB3"
+    },
+    {
+      "id": 2,
+      "name": "Koenraad Lefort",
+      "age": 22,
+      "gender": "Male",
+      "marks": 0,
+      "cohort": "PTWEB3"
+    },
+    {
+      "id": 3,
+      "name": "Finn Wickey",
+      "age": 27,
+      "gender": "Male",
+      "marks": 5,
+      "cohort": "PTWEB3"
+    },
+    {
+      "id": 4,
+      "name": "Danit Seneschal",
+      "age": 22,
+      "gender": "Female",
+      "marks": 8,
+      "cohort": "PTWEB2"
+    },
+    {
+      "id": 5,
+      "name": "Judith Pinyon",
+      "age": 24,
+      "gender": "Female",
+      "marks": 1,
+      "cohort": "PTWEB3"
+    },
+    {
+      "name": "Adams Petry",
+      "age": "24",
+      "gender": "Male",
+      "marks": "9",
+      "cohort": "PTWEB3",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "name": "Minette Malthouse",
+      "age": 19,
+      "gender": "Female",
+      "marks": 4,
+      "cohort": "PTWEB3"
+    },
+    {
+      "id": 8,
+      "name": "Fanny Hallbord",
+      "age": 22,
+      "gender": "Female",
+      "marks": 1,
+      "cohort": "PTWEB1"
+    },
+    {
+      "id": 9,
+      "name": "Tallia O' Finan",
+      "age": 23,
+      "gender": "Female",
+      "marks": 10,
+      "cohort": "PTWEB1"
+    },
+    {
+      "id": 10,
+      "name": "Kamilah Holgan",
+      "age": 18,
+      "gender": "Female",
+      "marks": 1,
+      "cohort": "PTWEB2"
+    },
+    {
+      "id": 11,
+      "name": "Kenon Skitch",
+      "age": 18,
+      "gender": "Male",
+      "marks": 3,
+      "cohort": "PTWEB1"
+    },
+    {
+      "id": 12,
+      "name": "Joni Charrington",
+      "age": 23,
+      "gender": "Genderfluid",
+      "marks": 5,
+      "cohort": "PTWEB3"
+    },
+    {
+      "id": 13,
+      "name": "Amalie Garroch",
+      "age": 19,
+      "gender": "Female",
+      "marks": 10,
+      "cohort": "PTWEB2"
+    },
+    {
+      "id": 14,
+      "name": "Grete Garralts",
+      "age": 24,
+      "gender": "Female",
+      "marks": 6,
+      "cohort": "PTWEB1"
+    },
+    {
+      "name": "srinu moka",
+      "age": "21",
+      "gender": "male",
+      "marks": "9",
+      "cohort": "PTWEB4",
+      "id": 16
+    },
+    {
+      "name": "Charmain Bartali",
+      "age": "20",
+      "gender": "Polygender",
+      "marks": "9",
+      "cohort": "PTWEB1",
+      "id": 17
+    }
+  ]
+}
